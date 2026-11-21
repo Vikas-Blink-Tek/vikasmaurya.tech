@@ -4,21 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Vikas Maurya — security engineer, digital forensics, VAPT and full-stack development. Mumbai, India.">
-<link rel="canonical" href="http://vikasmaurya.tech/">
+<link rel="canonical" href="https://vikasmaurya.tech/">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://vikasmaurya.tech/">
+<meta property="og:url" content="https://vikasmaurya.tech/">
 <meta property="og:title" content="Vikas Maurya · Security Engineer">
 <meta property="og:description" content="Security engineer from Mumbai: digital forensics at a police cyber cell, VAPT, and full-stack apps. Explore my projects, experience and certificates, or ask my AI assistant.">
-<meta property="og:image" content="http://vikasmaurya.tech/og-image.jpg">
+<meta property="og:image" content="https://vikasmaurya.tech/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Vikas Maurya · Security Engineer">
 <meta name="twitter:description" content="Digital forensics, VAPT and full-stack development. Mumbai, India.">
-<meta name="twitter:image" content="http://vikasmaurya.tech/og-image.jpg">
+<meta name="twitter:image" content="https://vikasmaurya.tech/og-image.jpg">
 <title>Vikas Maurya · Security Engineer</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: the portfolio is a small operating system. Wide screens get a real desktop with draggable windows and a dock;
    narrow screens get the same windows stacked as a scrolling page. */
@@ -339,6 +339,110 @@ table.cap{border-collapse:collapse;width:100%;font:400 12.5px/1.4 var(--f-mono);
   .wm .win[data-app="ai"] .wb{overflow:hidden}
   .wm #chat{height:auto;min-height:0}
 }
+
+/* ===================== Apple HIG pass =====================
+   Content layer: opaque windows on the live wallpaper.
+   Functional layer (glass): menu bar, window title bars, sidebar, dock, menus, Spotlight, notifications.
+   Type: San Francisco on Apple devices, Inter elsewhere. One accent, used for primary actions and selection. */
+:root{
+  --win:#ffffff; --win-2:#f5f5f7; --ink:#1d1d1f; --mute:#6e6e73; --line:rgba(0,0,0,.1);
+  --acc:#0066cc; --btn:#0066cc; --acc-ink:#ffffff;
+  --glass:rgba(248,248,250,.72); --glass-side:rgba(242,242,246,.82); --glass-menu:rgba(246,246,248,.8); --glass-line:rgba(0,0,0,.09); --glass-hi:rgba(255,255,255,.7);
+  --f-ui:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",system-ui,"Segoe UI",Roboto,sans-serif;
+  --f-disp:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter",system-ui,sans-serif;
+  --f-mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  --r-win:16px; --ease:cubic-bezier(.2,.8,.2,1);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--win:#1e1e20;--win-2:#2a2a2d;--ink:#f5f5f7;--mute:#a1a1a6;--line:rgba(255,255,255,.1);--acc:#3d9bff;--btn:#0a6fe0;--acc-ink:#ffffff;--glass:rgba(42,42,46,.7);--glass-side:rgba(36,36,40,.78);--glass-menu:rgba(40,40,44,.76);--glass-line:rgba(255,255,255,.1);--glass-hi:rgba(255,255,255,.14);color-scheme:dark}}
+:root[data-theme="dark"]{--win:#1e1e20;--win-2:#2a2a2d;--ink:#f5f5f7;--mute:#a1a1a6;--line:rgba(255,255,255,.1);--acc:#3d9bff;--btn:#0a6fe0;--acc-ink:#ffffff;--glass:rgba(42,42,46,.7);--glass-side:rgba(36,36,40,.78);--glass-menu:rgba(40,40,44,.76);--glass-line:rgba(255,255,255,.1);--glass-hi:rgba(255,255,255,.14);color-scheme:dark}
+body{font:400 14px/1.5 var(--f-ui);letter-spacing:-.006em}
+/* primary actions and selection share one accent fill */
+.btn.pri,.filt button[aria-pressed="true"],.msg.me,#spr li[aria-selected="true"],#toast .ta button.pri,#tip button{background:var(--btn);border-color:var(--btn);color:#fff}
+.btn{border-radius:999px;padding:7px 14px;font-weight:500;border:.5px solid var(--line);transition:background .15s,border-color .15s,transform .1s}
+.btn:active{transform:scale(.97)}
+.who h1{font:700 clamp(28px,4.4vw,36px)/1.05 var(--f-disp);letter-spacing:-.022em}
+.proj h3{font-family:var(--f-disp);letter-spacing:-.015em}
+.nums div{border:.5px solid var(--line);border-radius:12px;background:var(--win-2)}
+.welcome{border-radius:12px}
+/* menu bar: transparent glass over the wallpaper, monochrome labels */
+#bar{height:32px;gap:2px;background:rgba(10,12,16,.22);backdrop-filter:blur(30px) saturate(1.6);-webkit-backdrop-filter:blur(30px) saturate(1.6);border-bottom:0;font:500 13px var(--f-ui);color:#fff}
+#menus{display:flex;gap:1px;min-width:0;overflow-x:auto;scrollbar-width:none}
+#menus .mt{all:unset;cursor:default;padding:3px 10px;border-radius:7px;white-space:nowrap;line-height:20px}
+#menus .mt.app{font-weight:700}
+#menus .mt:hover,#menus .mt[aria-expanded="true"]{background:rgba(255,255,255,.2)}
+#menus .mt:focus-visible{outline:2px solid #fff;outline-offset:-2px}
+#clock{font:500 13px var(--f-ui);opacity:1}
+/* menus and context menus */
+.menu{position:fixed;z-index:2700;min-width:230px;padding:5px;border-radius:12px;background:var(--glass-menu);backdrop-filter:blur(30px) saturate(1.7);-webkit-backdrop-filter:blur(30px) saturate(1.7);border:.5px solid var(--glass-line);box-shadow:inset 0 .5px 0 var(--glass-hi),0 14px 44px rgba(0,0,0,.28),0 0 0 .5px rgba(0,0,0,.14);color:var(--ink);font:400 13px var(--f-ui);transform-origin:var(--mo,0 0)}
+.menu button{all:unset;cursor:default;display:flex;justify-content:space-between;align-items:center;gap:28px;width:100%;box-sizing:border-box;padding:4px 10px;border-radius:7px;line-height:18px}
+.menu button:hover,.menu button:focus-visible{background:var(--btn);color:#fff}
+.menu kbd{font:inherit;color:var(--mute);letter-spacing:.04em}
+.menu button:hover kbd,.menu button:focus-visible kbd{color:rgba(255,255,255,.85)}
+.menu hr{border:0;border-top:.5px solid var(--line);margin:5px 10px}
+/* dock: one glass shelf with a specular rim */
+#dock{gap:4px;padding:6px 8px;background:rgba(255,255,255,.16);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);border:.5px solid rgba(255,255,255,.32);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -1px 0 rgba(0,0,0,.12),0 12px 40px rgba(0,0,0,.35)}
+#dock .tile,.tile{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -1px 0 rgba(0,0,0,.12),0 3px 8px rgba(0,0,0,.25)}
+#dock button.run::after{background:rgba(255,255,255,.9);width:4px;height:4px}
+/* notification and spotlight in the same material */
+#toast{background:var(--glass-menu);backdrop-filter:blur(30px) saturate(1.7);-webkit-backdrop-filter:blur(30px) saturate(1.7);border:.5px solid var(--glass-line);border-radius:18px;box-shadow:inset 0 .5px 0 var(--glass-hi),0 18px 50px rgba(0,0,0,.35)}
+#toast .ta button{border-radius:999px}
+.sp-box{border-radius:22px;background:var(--glass-menu);backdrop-filter:blur(34px) saturate(1.8);-webkit-backdrop-filter:blur(34px) saturate(1.8);box-shadow:inset 0 .5px 0 var(--glass-hi),0 30px 90px rgba(0,0,0,.45)}
+#spr li{border-radius:10px}
+/* lock screen: bold clock and a glass capsule, like macOS */
+.lk-time{font:600 clamp(84px,16vw,156px)/.9 var(--f-disp);letter-spacing:-.035em}
+.lk-date{font:600 clamp(16px,2vw,21px) var(--f-disp)}
+.lk-name{font:600 clamp(21px,2.6vw,26px) var(--f-disp)}
+#enter{background:rgba(255,255,255,.2);color:#fff;border:.5px solid rgba(255,255,255,.35);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 10px 30px rgba(0,0,0,.3);padding:11px 14px 11px 22px;font:500 15px var(--f-ui)}
+#enter:hover{background:rgba(255,255,255,.3)}
+#enter span{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.92);color:#1d1d1f;font-size:14px}
+.lk-foot span{background:rgba(255,255,255,.14);border:.5px solid rgba(255,255,255,.22);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+@media(min-width:900px){
+  /* windows: opaque content, glass title bar that content sits under */
+  .wm .win{border:0;border-radius:var(--r-win);background:var(--win);box-shadow:0 0 0 .5px rgba(0,0,0,.22),0 2px 8px rgba(0,0,0,.1),0 22px 64px rgba(0,0,0,.34)}
+  .wm .win.act{box-shadow:0 0 0 .5px rgba(0,0,0,.25),0 4px 12px rgba(0,0,0,.12),0 34px 96px rgba(0,0,0,.48)}
+  .wm .win.max{height:calc(100% - 96px)!important;border-radius:0}
+  .wm .tb{position:absolute;inset:0 0 auto;z-index:4;height:52px;padding:0 16px;gap:14px;background:var(--glass);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);border-bottom:.5px solid var(--glass-line);box-shadow:inset 0 .5px 0 var(--glass-hi)}
+  .wm .tb .ttl{font:600 13px var(--f-ui);margin-right:60px}
+  .wm .win:not(.act) .tb .ttl{color:var(--mute)}
+  .wm .wb{padding-top:70px}
+  .wm .win[data-app="projects"] .wb,.wm .win[data-app="ai"] .wb,.wm .win[data-app="terminal"] .wb,.wm .win[data-app="preview"] .wb{padding-top:52px}
+  .wm .tb .ctl button{position:relative}
+  .wm .tb .ctl button::after{content:"";position:absolute;inset:-5px}
+  /* sidebar: an inset glass panel, as in current macOS */
+  .wm .win[data-app="projects"] .wb{grid-template-columns:262px minmax(0,1fr);padding-top:0}
+  .wm .files{margin:60px 0 8px 8px;border:.5px solid var(--glass-line);border-radius:12px;background:var(--glass-side);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);box-shadow:inset 0 .5px 0 var(--glass-hi),0 1px 4px rgba(0,0,0,.06);padding:6px}
+  .wm .files button{border-radius:8px;transition:background .12s}
+  .wm .files button[aria-current="true"]{background:var(--btn);color:#fff}
+  .wm .files button:hover:not([aria-current="true"]){background:color-mix(in srgb,var(--ink) 7%,transparent)}
+  .wm .files button img,.wm .files button i{border-radius:6px}
+  .wm .pv{padding:70px 22px 22px}
+  .wm .proj figure{border-radius:12px;border:.5px solid var(--line);box-shadow:0 8px 30px rgba(0,0,0,.12)}
+  /* dock tooltips instead of permanent labels */
+  .wm #dock button{font-size:0;gap:0;padding:4px 5px 8px}
+  .wm #dock button::before{content:attr(data-tip);position:absolute;bottom:calc(100% + 26px);left:50%;transform:translate(-50%,4px);font:500 12.5px var(--f-ui);color:var(--ink);white-space:nowrap;padding:4px 10px;border-radius:8px;background:var(--glass-menu);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:.5px solid var(--glass-line);box-shadow:0 6px 20px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .15s,transform .15s}
+  .wm #dock button:hover::before,.wm #dock button:focus-visible::before{opacity:1;transform:translate(-50%,0)}
+  .wm #dock .tile{width:48px;height:48px;border-radius:12px}
+  .wm #dock .tile svg.i{width:24px;height:24px}
+  .wm #icons button{border-radius:8px}
+  .wm #icons button:hover,.wm #icons button:focus-visible{background:rgba(255,255,255,.16)}
+}
+@media(max-width:899px){
+  #menus .mt:not(.app){display:none}
+  #dock{max-width:calc(100vw - 16px);gap:0;padding:6px 6px 4px}
+  #dock button{min-width:52px;padding:4px 4px 6px;font-size:10.5px;gap:3px;color:#fff}
+  #dock .tile{width:40px;height:40px}
+}
+/* accessibility: reduce transparency and increase contrast */
+@media (prefers-reduced-transparency: reduce){
+  #bar,#dock,.menu,#toast,.sp-box,#enter,.lk-foot span,.wm .tb,.wm .files,.wm #dock button::before{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  :root{--glass:var(--win-2);--glass-side:var(--win-2);--glass-menu:var(--win)}
+  #bar{background:#15171b}#dock{background:#2a2c31}#enter{background:#2a2c31}
+}
+@media (prefers-contrast: more){
+  :root{--line:rgba(0,0,0,.4);--glass-line:rgba(0,0,0,.45);--mute:#4a4a4f}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--line:rgba(255,255,255,.45);--glass-line:rgba(255,255,255,.5);--mute:#c7c7cc}}
+  .wm .win{box-shadow:0 0 0 1.5px var(--ink),0 22px 64px rgba(0,0,0,.34)}
+}
 </style>
 <style>body{margin:0}img{max-width:100%}</style>
 </head>
@@ -375,16 +479,7 @@ table.cap{border-collapse:collapse;width:100%;font:400 12.5px/1.4 var(--f-mono);
 </div>
 
 <header id="bar">
-  <span class="os">Vikas Maurya</span>
-  <nav aria-label="Open a window">
-    <button type="button" data-open="about">About</button>
-    <button type="button" data-open="projects">Projects</button>
-    <button type="button" data-open="career">Experience</button>
-    <button type="button" data-open="skills">Skills</button>
-    <button type="button" data-open="certs">Certificates</button>
-    <button type="button" data-open="ai">Ask AI</button>
-    <button type="button" data-open="contact">Contact</button>
-  </nav>
+  <nav id="menus" aria-label="Menu bar"></nav>
   <button id="spbtn" type="button" aria-label="Search (Ctrl or Cmd + K)" title="Search  ⌘K"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></button>
   <span id="clock">Mumbai</span>
 </header>
@@ -663,7 +758,7 @@ function sync(){$$('#dock button').forEach(b=>{const w=wins[b.dataset.open];b.cl
 const tip=$('#tip');let seen=false;try{seen=localStorage.getItem('vmos-tip')==='1';}catch(e){}
 $('#tipx').addEventListener('click',()=>{tip.hidden=true;try{localStorage.setItem('vmos-tip','1');}catch(e){}});
 function mode(){const wm=isWM();root.classList.toggle('wm',wm);
-  if(wm){$$('.win').forEach(w=>{if(!w._init){w._init=1;w.hidden=!(w.dataset.app==='about'||w.dataset.app==='projects');}if(!w.hidden)place(w);});focus(wins.about);show(cur);}
+  if(wm){$$('.win').forEach(w=>{if(!w._init){w._init=1;w.hidden=!(w.dataset.app==='about'||w.dataset.app==='projects');}if(!w.hidden)place(w);});const vis=$$('.win').filter(x=>!x.hidden&&x.dataset.app!=='preview');if(SAVED)vis.sort((a,b)=>((SAVED[a.dataset.app]||{}).z||0)-((SAVED[b.dataset.app]||{}).z||0));vis.forEach(x=>focus(x));show(cur);}
   else{$$('.win').forEach(w=>{w.hidden=false;w.removeAttribute('style');w.classList.remove('max','act');w._placed=0;});projs.forEach(p=>p.hidden=false);}
   tip.hidden=!wm||seen||root.classList.contains('locked');sync();}
 document.addEventListener('click',e=>{const o=e.target.closest('[data-open]');if(o){open(o.dataset.open);return;}
@@ -726,6 +821,54 @@ root.classList.add('locked');/* Spotlight (Cmd/Ctrl + K) */
   q.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){sel=Math.min(items.length-1,sel+1);mark();e.preventDefault();}else if(e.key==='ArrowUp'){sel=Math.max(0,sel-1);mark();e.preventDefault();}else if(e.key==='Enter'){go(sel);e.preventDefault();}else if(e.key==='Escape'){hide();e.preventDefault();}});
   sp.addEventListener('pointerdown',e=>{if(!e.target.closest('.sp-box'))hide();});
   addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'&&!root.classList.contains('locked')){e.preventDefault();sp.hidden?show2():hide();}});})();
+
+/* ---------- macOS menu bar, context menu and shortcuts ---------- */
+const APPORDER=[['about','About Me'],['projects','Projects'],['career','Experience'],['skills','Skills'],['certs','Certificates & Awards'],['terminal','Terminal'],['ai','Ask AI'],['contact','Contact']];
+const activeWin=()=>$$('.win').filter(x=>!x.hidden&&x.classList.contains('act'))[0];
+function winAct(k){const w=activeWin();if(!w||!root.classList.contains('wm'))return;k==='close'?close(w):k==='min'?minimise(w):toggleMax(w);}
+function lockNow(){try{sessionStorage.removeItem('vm-seen');}catch(e){}location.reload();}
+const MENUS=[
+  {id:'app',label:'Vikas Maurya',items:[['About This Portfolio',()=>open('about')],0,['Ask AI About Me…',()=>open('ai'),'⌥7'],['Contact…',()=>open('contact'),'⌥8'],0,['Search…',()=>window.__spot&&window.__spot(),'⌘K'],0,['Lock Screen',lockNow]]},
+  {id:'go',label:'Go',items:APPORDER.map(([k,n],i)=>[n,()=>open(k),'⌥'+(i+1)])},
+  {id:'win',label:'Window',items:[['Minimise',()=>winAct('min'),'⌥M'],['Zoom',()=>winAct('max')],['Close Window',()=>winAct('close'),'⌥W'],0,['Bring All to Front',()=>$$('.win').filter(x=>!x.hidden).sort((a,b)=>a.style.zIndex-b.style.zIndex).forEach(x=>focus(x))]]},
+  {id:'help',label:'Help',items:[['Ask AI About Vikas',()=>open('ai')],['Search This Portfolio',()=>window.__spot&&window.__spot(),'⌘K'],0,['Source on GitHub',()=>{const a=document.createElement('a');a.href='https://github.com/Vikas-Blink-Tek';a.target='_blank';a.rel='noopener';a.click();}]]}
+];
+let openMenu=null,openBtn=null;
+function buildMenu(items,label){const m=document.createElement('div');m.className='menu';m.setAttribute('role','menu');if(label)m.setAttribute('aria-label',label);
+  items.forEach(it=>{if(!it){m.appendChild(document.createElement('hr'));return;}const b=document.createElement('button');b.type='button';b.setAttribute('role','menuitem');
+    const t=document.createElement('span');t.textContent=it[0];b.appendChild(t);if(it[2]){const k=document.createElement('kbd');k.textContent=it[2];b.appendChild(k);}
+    b.addEventListener('click',()=>{closeMenus();setTimeout(it[1],0);});m.appendChild(b);});return m;}
+function showMenu(m,x,y,origin){closeMenus(true);document.body.appendChild(m);const r=m.getBoundingClientRect();
+  m.style.left=Math.max(6,Math.min(x,innerWidth-r.width-6))+'px';m.style.top=Math.max(6,Math.min(y,innerHeight-r.height-6))+'px';m.style.setProperty('--mo',origin||'0 0');openMenu=m;
+  if(window.Motion&&!RMO)window.Motion.animate(m,{opacity:[0,1],scale:[.97,1]},{duration:.14,ease:[.2,.8,.2,1]});}
+function closeMenus(keep){if(openMenu){openMenu.remove();openMenu=null;}if(openBtn){openBtn.setAttribute('aria-expanded','false');if(!keep)openBtn=null;}}
+const mbar=$('#menus');
+MENUS.forEach(M=>{const b=document.createElement('button');b.type='button';b.className='mt'+(M.id==='app'?' app':'');b.textContent=M.label;b.setAttribute('aria-haspopup','menu');b.setAttribute('aria-expanded','false');
+  const pop=()=>{const r=b.getBoundingClientRect();const m=buildMenu(M.items,M.label);showMenu(m,r.left,r.bottom+4);openBtn=b;b.setAttribute('aria-expanded','true');};
+  b.addEventListener('click',e=>{e.stopPropagation();if(openBtn===b&&openMenu){closeMenus();return;}pop();});
+  b.addEventListener('pointerenter',()=>{if(openMenu&&openBtn&&openBtn!==b)pop();});
+  b.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='Enter'||e.key===' '){e.preventDefault();pop();const f=openMenu&&openMenu.querySelector('button');if(f)f.focus();}});
+  mbar.appendChild(b);});
+document.addEventListener('pointerdown',e=>{if(openMenu&&!e.target.closest('.menu,#menus .mt'))closeMenus();},true);
+addEventListener('keydown',e=>{
+  if(openMenu){const its=$$('button',openMenu),i=its.indexOf(document.activeElement);
+    if(e.key==='Escape'){const b=openBtn;closeMenus();if(b)b.focus();e.preventDefault();return;}
+    if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();const n=its[(i+(e.key==='ArrowDown'?1:its.length-1))%its.length]||its[0];n.focus();return;}}
+  if(!e.altKey||e.metaKey||e.ctrlKey||root.classList.contains('locked'))return;
+  const c=e.code||'';const d=c.match(/^Digit([1-8])$/);
+  if(d){e.preventDefault();open(APPORDER[+d[1]-1][0]);}else if(c==='KeyM'){e.preventDefault();winAct('min');}else if(c==='KeyW'){e.preventDefault();winAct('close');}});
+/* right-click on the desktop */
+desk.addEventListener('contextmenu',e=>{if(!root.classList.contains('wm')||e.target.closest('.win,#icons button'))return;e.preventDefault();
+  showMenu(buildMenu([['Open Projects',()=>open('projects')],['Ask AI About Me…',()=>open('ai')],['Contact…',()=>open('contact')],0,['Search…',()=>window.__spot&&window.__spot(),'⌘K'],['Lock Screen',lockNow]],'Desktop'),e.clientX,e.clientY);});
+/* dock tooltips */
+$$('#dock button').forEach(b=>{b.dataset.tip=b.textContent.trim();b.setAttribute('aria-label',b.dataset.tip);});
+/* restore the windows people left open, where they left them */
+const SKEY='vm-desk-v1';let SAVED=null;try{SAVED=JSON.parse(localStorage.getItem(SKEY)||'null');}catch(e){}
+if(SAVED&&isWM()){$$('.win').forEach(w=>{const v=SAVED[w.dataset.app];if(!v)return;w._init=1;w.hidden=!v.o;if(v.w){w.dataset.x=v.x;w.dataset.y=v.y;w.dataset.w=v.w;w.dataset.h=v.h;}});}
+let st;function saveDesk(){clearTimeout(st);st=setTimeout(()=>{if(!root.classList.contains('wm'))return;const o={};
+  $$('.win').forEach(w=>{if(w.dataset.app==='preview')return;o[w.dataset.app]={o:!w.hidden,x:w.offsetLeft,y:w.offsetTop,w:w.offsetWidth,h:w.offsetHeight,z:+w.style.zIndex||0};});
+  try{localStorage.setItem(SKEY,JSON.stringify(o));}catch(e){}},400);}
+new MutationObserver(saveDesk).observe(desk,{subtree:true,attributes:true,attributeFilter:['hidden','style']});
 root.classList.add('locked');
 mode();
 
@@ -997,7 +1140,7 @@ void main(){
   const MO=(!reduce&&window.Motion&&window.Motion.animate)?window.Motion:null,EZ=[.2,.8,.2,1];
   if(MO){MO.animate('.lk-time',{opacity:[0,1],y:[-14,0]},{duration:.9,ease:EZ});MO.animate('.lk-date',{opacity:[0,1],y:[-8,0]},{duration:.8,delay:.12,ease:EZ});
     MO.animate('.lk-user',{opacity:[0,1],y:[18,0]},{duration:.8,delay:.3,ease:EZ});MO.animate('.lk-foot',{opacity:[0,1]},{duration:.8,delay:.55,ease:EZ});}
-  function unlock(){if(done)return;done=true;clearInterval(iv);
+  function unlock(){if(done)return;done=true;clearInterval(iv);try{sessionStorage.setItem('vm-seen','1');}catch(e){}
     if(MO){MO.animate('#lock>*',{opacity:0,y:-16,scale:.98},{duration:.35,ease:'easeIn'});setTimeout(()=>lock.classList.add('out'),200);root.classList.remove('locked');
       const ws=$$('.win:not([hidden])'),ic=$$('#icons button'),dk=$('#dock');[...ws,...ic,dk].forEach(x=>x.style.opacity='0');
       MO.animate('#bar',{y:[-40,0],opacity:[0,1]},{duration:.55,delay:.3,ease:EZ});
@@ -1013,6 +1156,7 @@ void main(){
     setTimeout(()=>{toast.hidden=false;requestAnimationFrame(()=>requestAnimationFrame(()=>toast.classList.add('in')));setTimeout(()=>{if(toast.classList.contains('in'))hideToast();},11000);},reduce?300:1700);
     const f=isWM()?wins.about:null;if(f)focus(f);}
   lock.addEventListener('click',unlock);
+  try{if(sessionStorage.getItem('vm-seen')){lock.style.transition='none';lock.classList.add('out');setTimeout(unlock,0);}}catch(e){}
   addEventListener('keydown',function k(e){if(done){removeEventListener('keydown',k);return;}if(e.metaKey||e.ctrlKey||e.altKey||e.key==='Tab'||e.key==='Shift')return;e.preventDefault();unlock();});
   $('#enter').focus({preventScroll:true});
 })();
